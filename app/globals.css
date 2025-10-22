@@ -1,42 +1,105 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* Fonts */
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  @apply bg-black text-white font-inter;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+/* Neon gradient text */
+
+.text-gradient {
+  background: linear-gradient(90deg, #00ffff, #ff00ff, #ffdd00);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 8s ease infinite;
+  text-shadow: 0 0 6px rgba(0, 255, 255, 0.12);
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
   }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* neon shadow for cards */
+
+.shadow-neon {
+  box-shadow: 0 6px 30px rgba(0, 255, 255, 0.06),
+    0 0 40px rgba(255, 0, 255, 0.03);
+}
+
+/* apply hover classes inside layer to avoid Tailwind error */
+
+@layer components {
+  a.btn-neon {
+    @apply inline-block px-8 py-3 rounded-full font-semibold bg-gradient-to-r from-neonBlue to-neonPink text-black;
+  }
+}
+
+#hero-star-canvas {
+  position: absolute;
+  inset: 0;
+  /* top:0; bottom:0; left:0; right:0; */
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  /* behind everything */
+}
+
+@keyframes neonX-violet {
+  0% {
+    transform: translateX(-100%);
+    filter: brightness(1.2) drop-shadow(0 0 10px #550b9b);
+    opacity: 0.3;
+  }
+  50% {
+    filter: brightness(3) drop-shadow(0 0 25px #c084fc)
+      drop-shadow(0 0 35px #400279);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    filter: brightness(1.2) drop-shadow(0 0 10px #490787);
+    opacity: 0.3;
+  }
+}
+
+@keyframes neonY-violet {
+  0% {
+    transform: translateY(-100%);
+    filter: brightness(1.2) drop-shadow(0 0 10px #550b9b);
+    opacity: 0.3;
+  }
+  50% {
+    filter: brightness(3) drop-shadow(0 0 25px #c084fc)
+      drop-shadow(0 0 35px #400279);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    filter: brightness(1.2) drop-shadow(0 0 10px #490787);
+    opacity: 0.3;
+  }
+}
+
+.animate-neonX-violet {
+  animation: neonX-violet 2.5s linear infinite;
+}
+
+.animate-neonY-violet {
+  animation: neonY-violet 2.5s linear infinite;
 }
