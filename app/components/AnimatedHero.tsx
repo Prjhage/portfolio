@@ -13,8 +13,8 @@ export default function AnimatedHero() {
     if (!ctx) return;
 
     let rafId: number | null = null;
-    let stars: any[] = [];
-    let shootingStars: any[] = [];
+    let stars: unknown[] = [];
+    let shootingStars: unknown[] = [];
     let width = 0;
     let height = 0;
     const STAR_COUNT_BASE = 150;
