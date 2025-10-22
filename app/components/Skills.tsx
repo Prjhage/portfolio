@@ -1,6 +1,8 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
+
 import {
   FaJs,
   FaReact,
@@ -31,7 +33,7 @@ export default function AboutSection() {
     ) as HTMLCanvasElement;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
-    let stars: unknown[] = [];
+    let stars: any[] = [];
     let width = 0,
       height = 0;
     let rafId: number;
@@ -193,17 +195,23 @@ export default function AboutSection() {
           }}
           className="flex justify-center items-center"
         >
-          <Image
-            src="/mp.jpg"
-            alt="Developer"
-            className={`rounded-2xl shadow-2xl object-cover ${
+          <div
+            className={`relative rounded-2xl shadow-2xl overflow-hidden ${
               screenWidth < 640
                 ? "w-64 h-40"
                 : screenWidth < 1024
                 ? "w-80 h-48"
                 : "w-[500px] h-[350px]"
             } hover:scale-105 transition-transform duration-500`}
-          />
+          >
+            <Image
+              src="/mp.jpg"
+              alt="Developer"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
         </motion.div>
       </div>
     </section>
