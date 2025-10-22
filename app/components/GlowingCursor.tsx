@@ -6,7 +6,7 @@ export default function NeonCursor() {
   const trailRef = useRef<HTMLDivElement[]>([]);
   const [color, setColor] = useState("#00ffff");
   const trailCount = 8;
-// eslint-disable-next-line react-hooks/exhaustive-deps
+
   useEffect(() => {
     if (typeof window === "undefined" || window.innerWidth < 1024) return;
 
@@ -36,7 +36,7 @@ export default function NeonCursor() {
       document.body.removeChild(container);
       trailRef.current = [];
     };
-  }, []);
+  }, [color]);
 
   useEffect(() => {
     if (typeof window === "undefined" || window.innerWidth < 1024) return;
