@@ -33,7 +33,7 @@ export default function AboutSection() {
     ) as HTMLCanvasElement;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
-    let stars: any[] = [];
+    let stars: unknown[] = [];
     let width = 0,
       height = 0;
     let rafId: number;
