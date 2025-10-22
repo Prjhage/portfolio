@@ -8,10 +8,8 @@ export default function NeonCursor() {
   const trailCount = 8;
 
   useEffect(() => {
-    // Only run on desktop
     if (typeof window === "undefined" || window.innerWidth < 1024) return;
 
-    // create trail nodes
     const container = document.createElement("div");
     container.style.position = "fixed";
     container.style.left = "0";
@@ -46,7 +44,7 @@ export default function NeonCursor() {
     const onMove = (e: MouseEvent) => {
       const x = e.clientX;
       const y = e.clientY;
-      trailRef.current.forEach((el, i) => {
+      trailRef.current.forEach((el) => {
         el.style.left = `${x - parseInt(el.style.width) / 2}px`;
         el.style.top = `${y - parseInt(el.style.height) / 2}px`;
       });
@@ -61,19 +59,25 @@ export default function NeonCursor() {
     const onScroll = () => {
       const h = window.innerHeight;
       const y = window.scrollY;
-      if (y < h * 0.9) setColor("#00ffff");
-      else if (y < h * 1.9) setColor("#ff00ff");
-      else setColor("#a020ff");
+      let newColor = "#00ffff";
+
+      if (y < h * 0.9) newColor = "#00ffff";
+      else if (y < h * 1.9) newColor = "#ff00ff";
+      else newColor = "#a020ff";
+
+      setColor(newColor);
 
       trailRef.current.forEach((el) => {
-        el.style.background = color;
-        el.style.boxShadow = `0 0 12px ${color}`;
+        el.style.background = newColor;
+        el.style.boxShadow = `0 0 12px ${newColor}`;
       });
     };
+
     window.addEventListener("scroll", onScroll);
     onScroll();
+
     return () => window.removeEventListener("scroll", onScroll);
-  }, [color]);
+  }, []); // ✅ removed [color] dependency
 
   return null;
 }
