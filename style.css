@@ -18,7 +18,6 @@ body.dark {
   --secondary: #8b5cf6;
   --shadow-light: rgba(255, 255, 255, 0.05);
   --shadow-dark: rgba(0, 0, 0, 0.8);
-  background: var(--bg);
   color: var(--text);
 }
 
@@ -523,23 +522,29 @@ body.dark .about-card {
     margin-top: 40px;
     text-align: center;
   }
+
   .education-title {
     font-size: 20px;
     /* slightly smaller on mobile */
   }
+
   .education-cards {
     grid-template-columns: 1fr;
     gap: 16px;
   }
+
   .education-card {
     padding: 20px;
   }
+
   .education-card h4 {
     font-size: 17px;
   }
+
   .education-card p {
     font-size: 13px;
   }
+
   .edu-time {
     font-size: 12px;
   }
@@ -550,9 +555,11 @@ body.dark .about-card {
     border-radius: 16px;
     padding: 18px;
   }
+
   .education-card h4 {
     font-size: 16px;
   }
+
   .edu-time {
     letter-spacing: 0.5px;
   }
@@ -564,6 +571,7 @@ body.dark .about-card {
   .education-timeline::before {
     left: 20px;
   }
+
   .education-item {
     width: 100%;
     margin-left: 0 !important;
@@ -571,10 +579,12 @@ body.dark .about-card {
     padding-right: 20px;
     text-align: left;
   }
+
   .education-item::before {
     left: 12px;
     right: auto;
   }
+
   .education-card {
     max-width: 100%;
   }
@@ -673,15 +683,18 @@ body.dark .contact textarea {
     flex-direction: column-reverse;
     text-align: center;
   }
+
   .actions {
     justify-content: center;
     flex-wrap: wrap;
   }
+
   .about-card {
     grid-template-columns: 1fr;
     padding: 50px;
     text-align: center;
   }
+
   .about-stats {
     flex-direction: row;
     justify-content: center;
@@ -693,6 +706,7 @@ body.dark .contact textarea {
   section {
     padding: 80px 20px;
   }
+
   .hero-img img {
     width: 220px;
     height: 220px;
@@ -788,6 +802,7 @@ body.dark .contact textarea {
     align-items: center;
     gap: 16px;
   }
+
   .skill-pill {
     flex: 0 1 auto;
     white-space: nowrap;
@@ -801,6 +816,7 @@ body.dark .contact textarea {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -814,6 +830,7 @@ body.dark .contact textarea {
     font-size: 16px;
     padding: 18px 30px;
   }
+
   .skill-pill i {
     font-size: 22px;
   }
@@ -823,26 +840,33 @@ body.dark .contact textarea {
 
 .cursor {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 20px;
   height: 20px;
   border: 2px solid var(--accent);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
-  transform: translate(-50%, -50%);
+  transform: translate3d(0, 0, 0) translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease, border-color 0.3s ease;
 }
 
 .cursor-blur {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 300px;
   height: 300px;
   background: var(--accent);
   border-radius: 50%;
   filter: blur(100px);
-  opacity: 0.15;
+  opacity: 0;
   pointer-events: none;
   z-index: -1;
-  transform: translate(-50%, -50%);
+  transform: translate3d(0, 0, 0) translate(-50%, -50%);
+  transition: opacity 0.5s ease, background 0.3s ease;
 }
 
 /* ================= ANIMATIONS ================= */
@@ -852,6 +876,7 @@ body.dark .contact textarea {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -863,6 +888,7 @@ body.dark .contact textarea {
     opacity: 0;
     transform: scale(0.8);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -874,6 +900,7 @@ body.dark .contact textarea {
     transform: translateX(-50%) translateY(-100px);
     opacity: 0;
   }
+
   to {
     transform: translateX(-50%) translateY(0);
     opacity: 1;
@@ -1033,9 +1060,11 @@ body.dark .code-editor {
   0% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-14px);
   }
+
   100% {
     transform: translateY(0);
   }
@@ -1046,6 +1075,7 @@ body.dark .code-editor {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -1059,6 +1089,7 @@ body.dark .code-editor {
     flex-direction: column;
     text-align: center;
   }
+
   .code-editor {
     width: 100%;
     max-width: 500px;
@@ -1115,6 +1146,7 @@ body.dark .code-editor {
 /* ================= MOBILE RESPONSIVENESS ================= */
 
 @media (max-width: 768px) {
+
   /* ---------- NAVBAR ---------- */
   .navbar {
     top: 15px;
@@ -1124,20 +1156,24 @@ body.dark .code-editor {
     width: 90%;
     justify-content: flex-start;
   }
+
   .navbar {
     background: transparent;
     box-shadow: none;
     padding: 0;
     border-radius: 0;
   }
+
   .navbar a {
     font-size: 14px;
   }
+
   /* ---------- HERO ---------- */
   .hero {
     padding-top: 120px;
     padding-bottom: 60px;
   }
+
   .hero-content {
     flex-direction: column;
     gap: 40px;
@@ -1145,73 +1181,91 @@ body.dark .code-editor {
     text-align: left;
     align-items: flex-start;
   }
+
   .hero-text h1 {
     font-size: 36px;
   }
+
   .hero-text h2 {
     font-size: 20px;
     letter-spacing: 2px;
   }
+
   .actions {
     justify-content: flex-start;
     flex-wrap: wrap;
   }
+
   .hero-img img {
     width: 220px;
     height: 220px;
   }
+
   /* ---------- CODE EDITOR (Hero Right) ---------- */
   .hero-code {
     width: 100%;
   }
+
   .code-editor {
     width: 100%;
     max-width: 100%;
   }
+
   .code {
     font-size: 13px;
     padding: 20px;
   }
+
   /* ---------- ABOUT ---------- */
   .about {
     min-height: auto;
     padding: 60px 20px;
   }
+
   .about-card {
     grid-template-columns: 1fr;
     padding: 40px 25px;
     text-align: center;
   }
+
   .about-text h2 {
     font-size: 28px;
   }
+
   .about-stats {
     flex-direction: row;
     justify-content: center;
     flex-wrap: nowrap;
     gap: 15px;
   }
+
   .stat {
     width: auto;
     flex: 1;
   }
+
   /* ---------- PROJECTS ---------- */
   .projects-grid {
     gap: 25px;
   }
+
   .project-card {
     padding: 25px;
   }
+
   .project-img {
     height: 180px;
   }
+
   /* ---------- EDUCATION TIMELINE ---------- */
   .education {
     padding: 80px 20px;
   }
+
   .education-timeline::before {
     left: 18px;
   }
+
   .education-item {
     width: 100%;
     margin-left: 0 !important;
@@ -1219,51 +1273,64 @@ body.dark .code-editor {
     padding-right: 0;
     text-align: left;
   }
+
   .education-item::before {
     left: 10px;
     right: auto;
     top: 28px;
   }
+
   .education-card {
     max-width: 100%;
   }
+
   /* ---------- SKILLS ---------- */
   .skills {
     padding: 60px 20px 80px;
   }
+
   .skills-wrapper {
     gap: 20px;
   }
+
   .skill-pill {
     padding: 16px 26px;
     font-size: 15px;
   }
+
   .skill-pill i {
     font-size: 22px;
   }
+
   /* ---------- CONTACT ---------- */
   .contact-card {
     gap: 30px;
   }
+
   .contact form {
     padding: 30px;
   }
+
   .contact-info p {
     font-size: 16px;
   }
+
   /* ---------- THEME TOGGLE ---------- */
   .theme-toggle {
     right: 15px;
     height: 220px;
   }
+
   .line {
     height: 80px;
   }
+
   .orb {
     top: 80px;
     width: 26px;
     height: 26px;
   }
+
   /* ---------- CURSOR (Disable on mobile) ---------- */
   .cursor,
   .cursor-blur {
@@ -1277,21 +1344,26 @@ body.dark .code-editor {
   .section-title {
     font-size: 26px;
   }
+
   .hero-text h1 {
     font-size: 32px;
   }
+
   .hero-text h2 {
     font-size: 18px;
   }
+
   .resume-btn {
     padding: 0 20px;
     height: 44px;
     font-size: 14px;
   }
+
   .socials a {
     width: 42px;
     height: 42px;
   }
+
   .project-links a {
     padding: 8px 18px;
     font-size: 13px;
@@ -1325,15 +1397,18 @@ body.dark .code-editor {
       transform 0.35s ease,
       box-shadow 0.35s ease;
   }
+
   .mobile-nav-toggle:hover {
     transform: scale(1.12);
     box-shadow:
       0 0 18px rgba(0, 242, 255, 1),
       0 0 40px rgba(0, 102, 255, 0.9);
   }
+
   .mobile-nav-toggle.active {
     transform: rotate(180deg);
   }
+
   /* ===== MOBILE NAV LINKS ===== */
   .nav-links {
     position: absolute;
@@ -1352,9 +1427,61 @@ body.dark .code-editor {
     pointer-events: none;
     transition: 0.45s ease;
   }
+
   .nav-links.active {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
   }
+}
+
+/* ===================================================
+   HERO CANVAS — Particle Network
+   =================================================== */
+
+/* Hero must be position:relative so the canvas is contained */
+.hero {
+  position: relative;
+}
+
+/* Canvas fills the full hero, sits behind all content */
+#heroCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 0;
+  pointer-events: none;
+  /* all mouse events pass through to child elements */
+}
+
+/* Ensures hero text/code sit above the canvas layer */
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===================================================
+   FULL-PAGE AURORA BACKGROUND CANVAS
+   =================================================== */
+
+/* Canvas takes over as the page background — it paints
+   the solid base colour + animated aurora orbs each frame */
+body {
+  background: transparent;
+}
+
+/* bgCanvas is fixed so it covers the entire viewport at all
+   scroll depths. z-index -1 keeps it behind all page content */
+#bgCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  z-index: -1;
+  pointer-events: none;
 }

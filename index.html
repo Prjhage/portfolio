@@ -1,98 +1,88 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Personal Portfolio</title>
-    <!-- <base href="/Portfolio/" /> -->
 
-    <!-- Google Font -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
-    />
-    <!-- Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Portfolio</title>
+  <!-- <base href="/Portfolio/" /> -->
 
-    <link rel="stylesheet" href="./style.css" />
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
-    <style>
-      .education-card {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-    </style>
-  </head>
+  <link rel="stylesheet" href="./style.css" />
 
-  <body>
-    <div class="cursor"></div>
-    <div class="cursor-blur"></div>
+  <style>
+    .education-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  </style>
+</head>
 
-    <!-- ===== NAVBAR ===== -->
-    <nav class="navbar">
-      <div class="mobile-nav-toggle" id="mobileNavToggle"></div>
-      <div class="nav-links" id="navLinks">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </nav>
+<body>
+  <!-- Full-page aurora background canvas — fixed, z-index -1, paints bg + glowing orbs -->
+  <canvas id="bgCanvas" aria-hidden="true"></canvas>
+  <div class="cursor"></div>
+  <div class="cursor-blur"></div>
 
-    <div class="theme-toggle" id="themeToggle">
-      <span class="line" id="pendulumLine"></span>
-      <span class="orb" id="pendulumOrb"></span>
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="mobile-nav-toggle" id="mobileNavToggle"></div>
+    <div class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
     </div>
-    <!-- ===== HERO ===== -->
-    <section class="hero" id="home">
-      <div class="hero-content">
-        <!-- LEFT CONTENT -->
-        <div class="hero-text">
-          <h1>Hey, I'm <span>Prajwal</span></h1>
+  </nav>
 
-          <p class="location">
-            <i class="fa-solid fa-location-dot"></i> Pune, Maharashtra, India
-          </p>
+  <div class="theme-toggle" id="themeToggle">
+    <span class="line" id="pendulumLine"></span>
+    <span class="orb" id="pendulumOrb"></span>
+  </div>
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <!-- Particle network canvas — sits behind all hero content (z-index 0) -->
+    <canvas id="heroCanvas" aria-hidden="true"></canvas>
+    <div class="hero-content">
+      <!-- LEFT CONTENT -->
+      <div class="hero-text">
+        <h1>Hey, I'm <span>Prajwal</span></h1>
 
-          <h2>I'm a <span id="typing"></span></h2>
+        <p class="location">
+          <i class="fa-solid fa-location-dot"></i> Pune, Maharashtra, India
+        </p>
 
-          <div class="actions">
-            <div class="socials">
-              <a href="https://github.com/Prjhage"
-                ><i class="fa-brands fa-github"></i
-              ></a>
-              <a href="https://www.linkedin.com/in/prajwal-hage-58738a303/"
-                ><i class="fa-brands fa-linkedin-in"></i
-              ></a>
-            </div>
+        <h2>I'm a <span id="typing"></span></h2>
 
-            <a href="./public/MY resume.pdf" target="_blank" class="resume-btn"
-              >Resume</a
-            >
+        <div class="actions">
+          <div class="socials">
+            <a href="https://github.com/Prjhage"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/prajwal-hage-58738a303/"><i class="fa-brands fa-linkedin-in"></i></a>
           </div>
+
+          <a href="./public/MY resume.pdf" target="_blank" class="resume-btn">Resume</a>
         </div>
+      </div>
 
-        <!-- RIGHT IMAGE -->
-        <div class="hero-code">
-          <div class="code-editor">
-            <div class="editor-header">
-              <span class="dot red"></span>
-              <span class="dot yellow"></span>
-              <span class="dot green"></span>
-            </div>
+      <!-- RIGHT IMAGE -->
+      <div class="hero-code">
+        <div class="code-editor">
+          <div class="editor-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
 
-            <pre class="code">
+          <pre class="code">
 <span class="keyword">const</span> <span class="variable">coder</span> = {
   name: <span class="string">'Prajwal'</span>,
   skills: [
@@ -111,149 +101,147 @@
   }
 };
         </pre>
-          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ===== ABOUT SECTION ===== -->
-    <section class="about" id="about">
-      <div class="about-card">
-        <div class="about-text">
-          <h2>About Me</h2>
+  <!-- ===== ABOUT SECTION ===== -->
+  <section class="about" id="about">
+    <div class="about-card">
+      <div class="about-text">
+        <h2>About Me</h2>
 
-          <p>
-            I’m a <strong>MERN Stack Developer</strong> who loves building
-            modern, scalable and user-friendly web applications.
-          </p>
+        <p>
+          I’m a <strong>MERN Stack Developer</strong> who loves building
+          modern, scalable and user-friendly web applications.
+        </p>
 
-          <p>
-            I enjoy turning complex problems into simple, beautiful solutions
-            using
-            <strong>MongoDB, Express, React, and Node.js</strong>.
-          </p>
+        <p>
+          I enjoy turning complex problems into simple, beautiful solutions
+          using
+          <strong>MongoDB, Express, React, and Node.js</strong>.
+        </p>
 
-          <!-- ===== EDUCATION INSIDE ABOUT ===== -->
-          <div class="about-education">
-            <h3 class="education-title">Education</h3>
+        <!-- ===== EDUCATION INSIDE ABOUT ===== -->
+        <div class="about-education">
+          <h3 class="education-title">Education</h3>
 
-            <div class="education-cards">
-              <div class="education-card">
-                <h4>Bachelor of Technology</h4>
-                <p>Computer Science</p>
-                <span class="edu-time">2023 – 2027</span>
-              </div>
+          <div class="education-cards">
+            <div class="education-card">
+              <h4>Bachelor of Technology</h4>
+              <p>Computer Science</p>
+              <span class="edu-time">2023 – 2027</span>
+            </div>
 
-              <div class="education-card">
-                <h4>Higher Secondary</h4>
-                <p>Science Stream</p>
-                <span class="edu-time">2020 – 2022</span>
-              </div>
+            <div class="education-card">
+              <h4>Higher Secondary</h4>
+              <p>Science Stream</p>
+              <span class="edu-time">2020 – 2022</span>
+            </div>
 
-              <div class="education-card">
-                <h4>Secondary School</h4>
-                <p>Maharashtra Board</p>
-                <span class="edu-time">2010 – 2020</span>
-              </div>
+            <div class="education-card">
+              <h4>Secondary School</h4>
+              <p>Maharashtra Board</p>
+              <span class="edu-time">2010 – 2020</span>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- RIGHT: STATS -->
-        <div class="about-stats">
-          <div class="stat">
-            <h3>5+</h3>
-            <span>Projects Built</span>
-          </div>
-          <div class="stat">
-            <h3>5+</h3>
-            <span>Technologies</span>
-          </div>
+      <!-- RIGHT: STATS -->
+      <div class="about-stats">
+        <div class="stat">
+          <h3>5+</h3>
+          <span>Projects Built</span>
+        </div>
+        <div class="stat">
+          <h3>5+</h3>
+          <span>Technologies</span>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="skills" id="skills">
-      <h2 class="section-title">Skills</h2>
+  <section class="skills" id="skills">
+    <h2 class="section-title">Skills</h2>
 
-      <div class="skills-wrapper">
-        <div class="skill-pill">
-          <i class="devicon-html5-plain"></i>
-          <span>HTML</span>
-        </div>
+    <div class="skills-wrapper">
+      <div class="skill-pill">
+        <i class="devicon-html5-plain"></i>
+        <span>HTML</span>
+      </div>
 
-        <div class="skill-pill">
-          <i class="devicon-css3-plain"></i>
-          <span>CSS</span>
-        </div>
+      <div class="skill-pill">
+        <i class="devicon-css3-plain"></i>
+        <span>CSS</span>
+      </div>
 
-        <div class="skill-pill">
-          <i class="devicon-javascript-plain"></i>
-          <span>JavaScript</span>
-        </div>
+      <div class="skill-pill">
+        <i class="devicon-javascript-plain"></i>
+        <span>JavaScript</span>
+      </div>
 
-        <div class="skill-pill">
-          <i class="devicon-react-original"></i>
-          <span>React</span>
-        </div>
+      <div class="skill-pill">
+        <i class="devicon-react-original"></i>
+        <span>React</span>
+      </div>
 
-        <div class="skill-pill">
-          <i class="devicon-nodejs-plain"></i>
-          <span>Node.js</span>
-        </div>
+      <div class="skill-pill">
+        <i class="devicon-nodejs-plain"></i>
+        <span>Node.js</span>
+      </div>
 
-        <div class="skill-pill">
-          <i class="devicon-express-original"></i>
-          <span>Express</span>
-        </div>
+      <div class="skill-pill">
+        <i class="devicon-express-original"></i>
+        <span>Express</span>
+      </div>
 
-        <div class="skill-pill">
-          <i class="devicon-mongodb-plain"></i>
-          <span>MongoDB</span>
-        </div>
+      <div class="skill-pill">
+        <i class="devicon-mongodb-plain"></i>
+        <span>MongoDB</span>
+      </div>
 
-        <div class="skill-pill">
-          <i class="devicon-git-plain"></i>
-          <span>Git & GitHub</span>
+      <div class="skill-pill">
+        <i class="devicon-git-plain"></i>
+        <span>Git & GitHub</span>
+      </div>
+      <div class="skill-pill">
+        <i class="devicon-cplusplus-plain"></i>
+        <span>C++</span>
+      </div>
+      <div class="skill-pill">
+        <i class="devicon-python-plain"></i>
+        <span>Python</span>
+      </div>
+    </div>
+  </section>
+  <!-- ===== PROJECTS SECTION ===== -->
+  <section class="projects" id="projects">
+    <h2 class="section-title">Projects</h2>
+
+    <div class="projects-grid">
+      <!-- Project Card 1 -->
+
+      <!-- Project Card 2 -->
+      <div class="project-card">
+        <div class="project-img">
+          <img src="./public/Grandel.png" alt="Project 2" />
         </div>
-        <div class="skill-pill">
-          <i class="devicon-cplusplus-plain"></i>
-          <span>C++</span>
-        </div>
-        <div class="skill-pill">
-          <i class="devicon-python-plain"></i>
-          <span>Python</span>
+        <h3>Grandel</h3>
+        <p>
+          Grandel is a premium, AI-powered travel platform designed for
+          discovering and booking unique high-end accommodations through a
+          sleek and intuitive global marketplace.
+        </p>
+        <div class="project-links">
+          <a href="https://grandel.vercel.app" target="_blank">Live</a>
+          <a href="https://github.com/Prjhage/Grandel" target="_blank">GitHub</a>
         </div>
       </div>
-    </section>
-    <!-- ===== PROJECTS SECTION ===== -->
-    <section class="projects" id="projects">
-      <h2 class="section-title">Projects</h2>
 
-      <div class="projects-grid">
-        <!-- Project Card 1 -->
-
-        <!-- Project Card 2 -->
-        <div class="project-card">
-          <div class="project-img">
-            <img src="./public/Grandel.png" alt="Project 2" />
-          </div>
-          <h3>Grandel</h3>
-          <p>
-            Grandel is a premium, AI-powered travel platform designed for
-            discovering and booking unique high-end accommodations through a
-            sleek and intuitive global marketplace.
-          </p>
-          <div class="project-links">
-            <a href="https://grandel.vercel.app" target="_blank">Live</a>
-            <a href="https://github.com/Prjhage/Grandel" target="_blank"
-              >GitHub</a
-            >
-          </div>
-        </div>
-
-        <!-- Project Card 3 -->
-        <!-- <div class="project-card">
+      <!-- Project Card 3 -->
+      <!-- <div class="project-card">
           <div class="project-img">
             <img src="./public/Travlio.png" alt="Project 3" />
           </div>
@@ -268,64 +256,56 @@
             >
           </div>
         </div> -->
-        <div class="project-card">
-          <div class="project-img">
-            <img src="./public/quizcraft.png" alt="Project 3" />
-          </div>
-          <h3>QuizCraft</h3>
-          <p>
-            QuizCraft is a responsive quiz application built with React. It
-            allows users to test their skills in programming languages and
-            computer science topics like JavaScript, Python, DSA, SQL, PHP, and
-            more.
-          </p>
-          <div class="project-links">
-            <a href="https://quizcraft-kmnw.onrender.com" target="_blank"
-              >Live</a
-            >
-            <a href="https://github.com/Prjhage/QuizCraft-" target="_blank"
-              >GitHub</a
-            >
-          </div>
+      <div class="project-card">
+        <div class="project-img">
+          <img src="./public/quizcraft.png" alt="Project 3" />
         </div>
-        <div class="project-card">
-          <div class="project-img">
-            <img src="./public/salaryai.png" alt="Project 3" />
-          </div>
-          <h3>Salary AI</h3>
-          <p>
-            A FastAPI-based machine learning app that predicts employee
-            salaries, classifies salary ranges, and identifies career growth
-            clusters.
-          </p>
-          <div class="project-links">
-            <a href="https://github.com/Prjhage/salary-ai" target="_blank"
-              >GitHub</a
-            >
-          </div>
-        </div>
-        <div class="project-card">
-          <div class="project-img">
-            <img src="./public/LockQuest.png" alt="Project 3" />
-          </div>
-          <h3>LockQuest</h3>
-          <p>
-            A challenge-based password game that tests logic, pattern
-            recognition, and creativity. Each keystroke reveals a new
-            rule—complete all to win!
-          </p>
-          <div class="project-links">
-            <a href="https://lock-quest.vercel.app/" target="_blank">Live</a>
-            <a href="https://github.com/Prjhage/LockQuest" target="_blank"
-              >GitHub</a
-            >
-          </div>
+        <h3>QuizCraft</h3>
+        <p>
+          QuizCraft is a responsive quiz application built with React. It
+          allows users to test their skills in programming languages and
+          computer science topics like JavaScript, Python, DSA, SQL, PHP, and
+          more.
+        </p>
+        <div class="project-links">
+          <a href="https://quizcraft-kmnw.onrender.com" target="_blank">Live</a>
+          <a href="https://github.com/Prjhage/QuizCraft-" target="_blank">GitHub</a>
         </div>
       </div>
-    </section>
+      <div class="project-card">
+        <div class="project-img">
+          <img src="./public/salaryai.png" alt="Project 3" />
+        </div>
+        <h3>Salary AI</h3>
+        <p>
+          A FastAPI-based machine learning app that predicts employee
+          salaries, classifies salary ranges, and identifies career growth
+          clusters.
+        </p>
+        <div class="project-links">
+          <a href="https://github.com/Prjhage/salary-ai" target="_blank">GitHub</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-img">
+          <img src="./public/LockQuest.png" alt="Project 3" />
+        </div>
+        <h3>LockQuest</h3>
+        <p>
+          A challenge-based password game that tests logic, pattern
+          recognition, and creativity. Each keystroke reveals a new
+          rule—complete all to win!
+        </p>
+        <div class="project-links">
+          <a href="https://lock-quest.vercel.app/" target="_blank">Live</a>
+          <a href="https://github.com/Prjhage/LockQuest" target="_blank">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- ===== EDUCATION SECTION ===== -->
-    <!-- <section class="education" id="education">
+  <!-- ===== EDUCATION SECTION ===== -->
+  <!-- <section class="education" id="education">
       <h2 class="section-title">Education</h2>
 
       <div class="education-timeline">
@@ -355,33 +335,29 @@
       </div>
     </section> -->
 
-    <!-- ===== CONTACT SECTION ===== -->
-    <section class="contact" id="contact">
-      <h2 class="section-title">Contact Me</h2>
+  <!-- ===== CONTACT SECTION ===== -->
+  <section class="contact" id="contact">
+    <h2 class="section-title">Contact Me</h2>
 
-      <div class="contact-card">
-        <form id="contactForm">
-          <input type="text" id="name" placeholder="Your Name" required />
-          <input type="email" id="email" placeholder="Your Email" required />
-          <textarea
-            id="message"
-            rows="5"
-            placeholder="Your Message"
-            required
-          ></textarea>
-          <button type="submit">Send Message</button>
-          <p id="formStatus"></p>
-        </form>
+    <div class="contact-card">
+      <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required />
+        <input type="email" id="email" placeholder="Your Email" required />
+        <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+        <p id="formStatus"></p>
+      </form>
 
-        <div class="contact-info">
-          <p><i class="fa-solid fa-envelope"></i> paju10hage@gmail.com</p>
-          <p>
-            <i class="fa-solid fa-location-dot"></i> Pune, Maharashtra, India
-          </p>
-        </div>
+      <div class="contact-info">
+        <p><i class="fa-solid fa-envelope"></i> paju10hage@gmail.com</p>
+        <p>
+          <i class="fa-solid fa-location-dot"></i> Pune, Maharashtra, India
+        </p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <script src="./script.js"></script>
-  </body>
+  <script src="./script.js"></script>
+</body>
+
 </html>
